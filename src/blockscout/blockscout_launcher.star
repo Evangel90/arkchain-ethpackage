@@ -272,16 +272,12 @@ def get_config_frontend(
         "HOSTNAME": "0.0.0.0",
         "NEXT_PUBLIC_API_PROTOCOL": "http",
         "NEXT_PUBLIC_API_WEBSOCKET_PROTOCOL": "ws",
-        "NEXT_PUBLIC_APP_NAME": "Arkscan",
-        "NEXT_PUBLIC_SITE_TITLE": "Arkscan Explorer",
-        "NEXT_PUBLIC_PROJECT_NAME": "Arkscan",
         "NEXT_PUBLIC_NETWORK_NAME": "Arkscan",
         "NEXT_PUBLIC_NETWORK_SHORT_NAME": "Arkscan",
         "NEXT_PUBLIC_NETWORK_ID": network_params.network_id,
         "NEXT_PUBLIC_NETWORK_RPC_URL": el_client_rpc_url,
         "NEXT_PUBLIC_NETWORK_CURRENCY_NAME": "KASH",
         "NEXT_PUBLIC_NETWORK_CURRENCY_SYMBOL": "KASH",
-        "NEXT_PUBLIC_NETWORK_CURRENCY_GWEI_NAME": "mKash",
         "NEXT_PUBLIC_NETWORK_CURRENCY_WEI_NAME": "nKash",
         "NEXT_PUBLIC_API_HOST": get_api_host(blockscout_service, port_publisher)
         + ":"
