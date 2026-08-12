@@ -151,7 +151,13 @@ network_params:
   builder_count: 0
   builder_balance: 100
 
-additional_services: []
+additional_services:
+  - blockscout
+blockscout_params:
+  image: "ghcr.io/blockscout/blockscout:latest"
+  verif_image: "ghcr.io/blockscout/smart-contract-verifier:latest"
+  frontend_image: "ghcr.io/blockscout/frontend:latest"
+  env: {}
 dora_params:
   image: "ethpandaops/dora:latest"
 tx_fuzz_params:
