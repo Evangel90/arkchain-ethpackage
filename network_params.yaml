@@ -156,7 +156,7 @@ additional_services:
 blockscout_params:
   image: "ghcr.io/blockscout/blockscout:latest"
   verif_image: "ghcr.io/blockscout/smart-contract-verifier:latest"
-  frontend_image: "ghcr.io/blockscout/frontend:latest"
+  frontend_image: "arkscan-blockscout/frontend:arkchain"
   env: {}
 dora_params:
   image: "ethpandaops/dora:latest"

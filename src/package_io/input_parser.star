@@ -2149,7 +2149,8 @@ def get_default_blockscout_params():
     return {
         "image": "ghcr.io/blockscout/blockscout:latest",
         "verif_image": "ghcr.io/blockscout/smart-contract-verifier:latest",
-        "frontend_image": "ghcr.io/blockscout/frontend:latest",
+        # Default frontend uses a small overlay that injects MetaMask add-chain logic
+        "frontend_image": "arkscan-blockscout/frontend:arkchain",
         "env": {},
     }
 
