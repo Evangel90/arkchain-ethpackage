@@ -157,7 +157,8 @@ blockscout_params:
   image: "ghcr.io/blockscout/blockscout:latest"
   verif_image: "ghcr.io/blockscout/smart-contract-verifier:latest"
   frontend_image: "ghcr.io/blockscout/frontend:latest"
-  env: {}
+  env:
+    NEXT_PUBLIC_NETWORK_RPC_URL: "http://127.0.0.1:32806"
 dora_params:
   image: "ethpandaops/dora:latest"
 tx_fuzz_params:
