@@ -154,11 +154,14 @@ network_params:
 additional_services:
   - blockscout
 blockscout_params:
-  image: "ghcr.io/blockscout/blockscout:latest"
+  image: "ghcr.io/blockscout/blockscout@sha256:7659f168e4e2f6b73dd559ae5278fe96ba67bc2905ea01b57a814c68adf5a9dc"
   verif_image: "ghcr.io/blockscout/smart-contract-verifier:latest"
-  frontend_image: "ghcr.io/blockscout/frontend:latest"
+  frontend_image: "ghcr.io/blockscout/frontend:v2.0.0"
   env:
-    NEXT_PUBLIC_NETWORK_RPC_URL: "http://127.0.0.1:32806"
+    NEXT_PUBLIC_NETWORK_RPC_URL: "http://172.20.10.4:32003"
+    NEXT_PUBLIC_APP_HOST: "0.0.0.0"
+    NEXT_PUBLIC_USE_NEXT_JS_PROXY: "false"
+    NEXT_PUBLIC_API_HOST: "172.20.10.4:36001"
 dora_params:
   image: "ethpandaops/dora:latest"
 tx_fuzz_params:
@@ -281,27 +284,27 @@ ethereum_genesis_generator_params:
   image: ethpandaops/ethereum-genesis-generator:6.1.6
   extra_env: {}
 port_publisher:
-  nat_exit_ip: KURTOSIS_IP_ADDR_PLACEHOLDER
+  nat_exit_ip: 172.20.10.4
   el:
-    enabled: false
+    enabled: true
     public_port_start: 32000
   cl:
-    enabled: false
+    enabled: true
     public_port_start: 33000
   vc:
-    enabled: false
+    enabled: true
     public_port_start: 34000
   remote_signer:
-    enabled: false
+    enabled: true
     public_port_start: 35000
   additional_services:
-    enabled: false
+    enabled: true
     public_port_start: 36000
   mev:
-    enabled: false
+    enabled: true
     public_port_start: 37000
   other:
-    enabled: false
+    enabled: true
     public_port_start: 38000
 
 # Define custom file contents to be mounted into containers
