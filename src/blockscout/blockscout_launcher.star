@@ -211,13 +211,15 @@ def get_config_backend(
     )
 
     env_vars = {
-        "ETHEREUM_JSONRPC_VARIANT": "erigon"
-        if el_client_name == "erigon" or el_client_name == "reth"
-        else el_client_name,
+        "ETHEREUM_JSONRPC_VARIANT": "geth"
+        if el_client_name == "reth"
+        else ("erigon" if el_client_name == "erigon" else el_client_name),
         "ETHEREUM_JSONRPC_HTTP_URL": el_client_rpc_url,
         "ETHEREUM_JSONRPC_TRACE_URL": el_client_rpc_url,
         "DATABASE_URL": database_url,
         "COIN": "KASH",
+        "COIN_NAME": "KASH",
+        "SUB_NATIVE_COIN_NAME": "XPs",
         "MICROSERVICE_SC_VERIFIER_ENABLED": "true",
         "MICROSERVICE_SC_VERIFIER_URL": verif_url,
         "MICROSERVICE_SC_VERIFIER_TYPE": "sc_verifier",
@@ -275,25 +277,22 @@ def get_config_frontend(
         "NEXT_PUBLIC_NETWORK_NAME": "Ark Chain",
         "NEXT_PUBLIC_NETWORK_SHORT_NAME": "Ark Chain",
         "NEXT_PUBLIC_NETWORK_ID": network_params.network_id,
-        "NEXT_PUBLIC_NETWORK_RPC_URL": el_client_rpc_url,
+        "NEXT_PUBLIC_NETWORK_RPC_URL": "http://127.0.0.1:32003",
         "NEXT_PUBLIC_NETWORK_CURRENCY_NAME": "KASH",
         "NEXT_PUBLIC_NETWORK_CURRENCY_SYMBOL": "KASH",
-        "NEXT_PUBLIC_NETWORK_CURRENCY_WEI_NAME": "nKash",
-        "NEXT_PUBLIC_API_HOST": get_api_host(blockscout_service, port_publisher)
-        + ":"
-        + str(get_api_port(blockscout_service, port_publisher)),
+        "NEXT_PUBLIC_NETWORK_CURRENCY_WEI_NAME": "XPs",
+        "NEXT_PUBLIC_API_HOST": "localhost:36001",
         "NEXT_PUBLIC_AD_BANNER_PROVIDER": "none",
         "NEXT_PUBLIC_AD_TEXT_PROVIDER": "none",
         "NEXT_PUBLIC_IS_TESTNET": "true",
-        "NEXT_PUBLIC_GAS_TRACKER_ENABLED": "true",
+        "NEXT_PUBLIC_GAS_TRACKER_ENABLED": "false",
         "NEXT_PUBLIC_HAS_BEACON_CHAIN": "true",
         "NEXT_PUBLIC_NETWORK_VERIFICATION_TYPE": "validation",
         "NEXT_PUBLIC_NETWORK_ICON": "https://ethpandaops.io/logo.png",
-        # "NEXT_PUBLIC_APP_HOST": "0.0.0.0",
         "NEXT_PUBLIC_APP_PROTOCOL": "http",
-        "NEXT_PUBLIC_APP_HOST": "127.0.0.1",
+        "NEXT_PUBLIC_APP_HOST": "localhost:3000",
         "NEXT_PUBLIC_APP_PORT": str(HTTP_PORT_NUMBER_FRONTEND),
-        "NEXT_PUBLIC_USE_NEXT_JS_PROXY": "true",
+        "NEXT_PUBLIC_USE_NEXT_JS_PROXY": "false",
         "PORT": str(HTTP_PORT_NUMBER_FRONTEND),
     }
     env_vars.update(blockscout_params.env)
